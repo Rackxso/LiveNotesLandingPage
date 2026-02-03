@@ -38,7 +38,7 @@ app.post("/api/register", async (req, res) => {
       // Email duplicado - lo consideramos éxito para no revelar info
       return res.json({ ok: true });
     }
-    
+
     console.error("Supabase error:", error);
     return res.json({ ok: false, error: "An error occurred. Please try again." });
   }
