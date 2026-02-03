@@ -1,0 +1,21 @@
+{
+  "name": "livenotes-waitlist",
+  "version": "1.0.0",
+  "description": "Waitlist page for LiveNotes using HTML, CSS, JS and Express with Supabase",
+  "type": "module",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "dotenv": "^16.4.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.2.1",
+    "resend": "^6.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
