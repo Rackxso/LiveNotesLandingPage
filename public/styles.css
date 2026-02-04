@@ -151,7 +151,7 @@ main {
     text-align: center;
     animation: fadeInUp 0.6s ease-out 0.2s both;
     background: #B6885D;
-    padding: 2rem;
+    padding: 25px;
     border-radius: 20px;
     color: #3D1F12;
     display: grid;
@@ -165,7 +165,7 @@ main {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 380px));
+    grid-template-columns: repeat(4, minmax(250px, 380px));
     gap: 2rem;
     justify-self: center;
     margin-bottom: 3rem;
@@ -247,6 +247,15 @@ main {
 .toast-error {
     border-left: 4px solid #ef4444;
 }
+
+
+
+@media (max-width: 1200px){
+    .features-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+} 
 
 /* Responsive */
 @media (max-width: 768px) {
