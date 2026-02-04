@@ -9,50 +9,34 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Servir archivos estáticos
+// Static files
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.join(__dirname, "../Public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
-// Registrar email en Supabase
+// API routes
 app.post("/api/register", async (req, res) => {
   const { email } = req.body;
 
   if (!email) {
-    return res.json({ ok: false, error: "Email is required" });
+    return res.json({ ok: false, error: "Email missing" });
   }
 
-  // Validar formato de email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return res.json({ ok: false, error: "Invalid email format" });
-  }
-
-  // Insertar en Supabase
   const { error } = await supabase
     .from("users")
     .insert({ email });
 
-  // Si el email ya existe (constraint unique), lo consideramos éxito
-  if (error) {
-    if (error.code === "23505") {
-      // Email duplicado - lo consideramos éxito para no revelar info
-      return res.json({ ok: true });
-    }
-
+  if (error && error.code !== "23505") {
     console.error("Supabase error:", error);
-    return res.json({ ok: false, error: "An error occurred. Please try again." });
+    return res.json({ ok: false });
   }
 
   res.json({ ok: true });
 });
 
-// Health check (útil para monitoreo)
-app.get("/api/health", (req, res) => {
-  res.json({ status: "ok" });
+// Fallback: sirve index.html para cualquier ruta no manejada
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
-});
+// Export para Vercel
+export default app;
