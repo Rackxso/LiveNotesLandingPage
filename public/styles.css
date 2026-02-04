@@ -151,7 +151,7 @@ main {
     text-align: center;
     animation: fadeInUp 0.6s ease-out 0.2s both;
     background: #B6885D;
-    padding: 25px;
+    padding: 20px;
     border-radius: 20px;
     color: #3D1F12;
     display: grid;
@@ -159,7 +159,7 @@ main {
 
 .features-title {
     font-size: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 
@@ -168,7 +168,7 @@ main {
     grid-template-columns: repeat(4, minmax(250px, 380px));
     gap: 2rem;
     justify-self: center;
-    margin-bottom: 3rem;
+    margin-bottom: 20px;
 }
 
 .feature-card {
@@ -189,14 +189,14 @@ main {
 .feature-title {
     font-size: 1.5rem;
     color: #3D1F12;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
     font-weight: 600;
 }
 
 .feature-description {
     color: #3D1F12;
     line-height: 1.8;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 }
 
 .feature-link {
@@ -214,7 +214,6 @@ main {
 .features-footer {
     color: #3D1F12;
     font-size: 1.8rem;
-    margin-top: 2rem;
     font-weight: bold;
 }
 
